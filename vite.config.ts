@@ -61,7 +61,7 @@
       port: 3000,
       open: true,
     },
-    build: {
+  build: {
     outDir: 'dist',
   },
 
