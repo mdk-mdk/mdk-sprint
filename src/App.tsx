@@ -7,10 +7,10 @@ import { CheckCircle2, ArrowLeft, Phone, Mail, TrendingUp, Target, Users, Briefc
 import { motion } from 'motion/react';
 import emailjs from '@emailjs/browser';
 import { toast, Toaster } from 'sonner';
-import logo from './assets/aa236394a85839d09501bca626eae31c5d179ec4.png';
-import sprintLogo from './assets/f54119a0a6b681dad2c885bd59b2f54d53912281.png';
-import sprintTextGold from './assets/7c6dbce4ffd04d54e185014e2151233310a3023d.png';
-import profilePhoto from './assets/126116c592ab5780f36d5a1ac3592f903761dc7d.png';
+import logo from 'figma:asset/aa236394a85839d09501bca626eae31c5d179ec4.png';
+import sprintLogo from 'figma:asset/f54119a0a6b681dad2c885bd59b2f54d53912281.png';
+import sprintTextGold from 'figma:asset/7c6dbce4ffd04d54e185014e2151233310a3023d.png';
+import profilePhoto from 'figma:asset/126116c592ab5780f36d5a1ac3592f903761dc7d.png';
 
 export default function App() {
   const [formData, setFormData] = useState({
@@ -275,12 +275,12 @@ export default function App() {
               className="space-y-6"
             >
               <h1 className="text-white text-4xl md:text-6xl lg:text-7xl leading-tight px-4 font-black">
-                חייב יותר הכנסות <span className="text-[#b89c57]">{typewriterText}</span>
+                חייב יותר הכנסות <span className="text-[#b89c57] whitespace-nowrap inline-block">{typewriterText}
                 <motion.span
                   className="inline-block w-1 h-12 md:h-20 bg-[#b89c57] mr-1 align-middle"
                   animate={{ opacity: [1, 0, 1] }}
                   transition={{ duration: 0.8, repeat: Infinity }}
-                />
+                /></span>
               </h1>
             </motion.div>
               
@@ -471,36 +471,47 @@ export default function App() {
                 { 
                   icon: TrendingUp, 
                   text: "המכירות תקועות ואני חייב הכנסות, עכשיו!", 
-                  gradient: "from-emerald-900 to-emerald-800"
+                  gradient: "from-emerald-900 to-emerald-800",
+                  animation: { x: -80, rotate: -5 }
                 },
                 { 
                   icon: HelpCircle, 
                   text: "חייב עוד הכנסות, מאיפה מתחילים? מה באמת יעבוד?", 
-                  gradient: "from-emerald-800 to-emerald-700"
+                  gradient: "from-emerald-800 to-emerald-700",
+                  animation: { x: 80, rotate: 5 }
                 },
                 { 
                   icon: Zap, 
                   text: "אני לא צריך עוד עצות אני צריך תוצאות אמיתיות!", 
-                  gradient: "from-emerald-900 via-emerald-800 to-emerald-900"
+                  gradient: "from-emerald-900 via-emerald-800 to-emerald-900",
+                  animation: { y: 60, scale: 0.8 }
                 },
                 { 
                   icon: Clock, 
                   text: "הכול עליי, ואין לי רגע לבחון מה עם הכנסות.", 
-                  gradient: "from-emerald-800 to-emerald-900"
+                  gradient: "from-emerald-800 to-emerald-900",
+                  animation: { y: 60, opacity: 0 }
                 }
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  initial={{ 
+                    opacity: item.animation.opacity !== undefined ? item.animation.opacity : 0,
+                    scale: item.animation.scale || 1,
+                    y: item.animation.y || 0,
+                    x: item.animation.x || 0,
+                    rotate: item.animation.rotate || 0
+                  }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0, x: 0, rotate: 0 }}
                   whileHover={{ scale: 1.03, y: -5 }}
                   transition={{ 
-                    duration: 0.5, 
+                    duration: 0.6, 
                     delay: index * 0.15,
                     type: "spring",
-                    stiffness: 200
+                    stiffness: 150,
+                    damping: 15
                   }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.3 }}
                   className="relative group h-full"
                 >
                   {/* Glow Effect */}
@@ -557,10 +568,10 @@ export default function App() {
               
               <motion.div
                 className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border-4 border-[#b89c57] max-w-4xl mx-auto"
-                initial={{ scale: 0.95 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
+                initial={{ scale: 0.85, opacity: 0, rotate: -3 }}
+                whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
+                transition={{ duration: 0.7, type: "spring", stiffness: 120 }}
+                viewport={{ once: true, amount: 0.3 }}
               >
                 <p className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-emerald-900">
                   <strong>12 שבועות של עבודה ממוקדת<br />שמייצרת שינוי אמיתי{' '}
@@ -688,10 +699,10 @@ export default function App() {
               {/* Card 1 - Large - Spans 2 columns */}
               <motion.div
                 className="md:col-span-2 group"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, scale: 0.85, rotate: -3 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 0.7, type: "spring", stiffness: 100 }}
+                viewport={{ once: true, amount: 0.2 }}
               >
                 <div className="relative h-full bg-gradient-to-br from-emerald-900 to-emerald-800 rounded-2xl p-8 md:p-10 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]">
                   {/* Decorative Background Pattern */}
@@ -742,10 +753,10 @@ export default function App() {
               {/* Card 2 - Small - 1 column */}
               <motion.div
                 className="group"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: -60, x: 40 }}
+                whileInView={{ opacity: 1, y: 0, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.15, type: "spring", stiffness: 120 }}
+                viewport={{ once: true, amount: 0.2 }}
               >
                 <div className="relative h-full bg-[#b89c57] rounded-2xl p-10 md:p-12 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]">
                   <div className="absolute bottom-0 left-0 w-48 h-48 bg-emerald-900/20 rounded-full blur-3xl"></div>
@@ -767,10 +778,10 @@ export default function App() {
               {/* Card 3 - Small - 1 column */}
               <motion.div
                 className="group"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 80, rotate: 4 }}
+                whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                transition={{ duration: 0.8, delay: 0.25, type: "spring", stiffness: 100 }}
+                viewport={{ once: true, amount: 0.2 }}
               >
                 <div className="relative h-full bg-[#b89c57] rounded-2xl p-10 md:p-12 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]">
                   <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-900/20 rounded-full blur-3xl"></div>
@@ -792,10 +803,10 @@ export default function App() {
               {/* Card 4 - Large - Spans 2 columns */}
               <motion.div
                 className="md:col-span-2 group"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, x: -70, scale: 0.9 }}
+                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.35, type: "spring", stiffness: 110 }}
+                viewport={{ once: true, amount: 0.2 }}
               >
                 <div className="relative h-full bg-gradient-to-br from-emerald-900 to-emerald-800 rounded-2xl p-8 md:p-10 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]">
                   {/* Decorative Background Pattern */}
@@ -959,16 +970,39 @@ export default function App() {
                   color: "teal",
                   side: "right"
                 }
-              ].map((step, index) => (
+              ].map((step, index) => {
+                const animations = [
+                  { x: -100, rotate: -8, scale: 0.7 },
+                  { x: 100, rotate: 8, scale: 0.7 },
+                  { y: 80, scale: 0.8, opacity: 0 },
+                  { x: -90, y: 40, rotate: -5 },
+                  { x: 90, y: -30, rotate: 5 },
+                  { y: 70, scale: 0.85 },
+                  { x: -80, scale: 0.9, opacity: 0.3 }
+                ];
+                const anim = animations[index] || { y: 50 };
+                
+                return (
                   <motion.div
                     key={index}
                     className={`relative flex flex-col md:flex-row items-center gap-6 ${
                       step.side === 'left' ? 'md:flex-row' : 'md:flex-row-reverse'
                     }`}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
+                    initial={{ 
+                      opacity: anim.opacity !== undefined ? anim.opacity : 0,
+                      x: anim.x || 0,
+                      y: anim.y || 0,
+                      scale: anim.scale || 1,
+                      rotate: anim.rotate || 0
+                    }}
+                    whileInView={{ opacity: 1, y: 0, x: 0, scale: 1, rotate: 0 }}
+                    transition={{ 
+                      duration: 0.7, 
+                      delay: index * 0.1,
+                      type: "spring",
+                      stiffness: 100
+                    }}
+                    viewport={{ once: true, amount: 0.2 }}
                   >
                     {/* Spacer for alternating layout on desktop */}
                     <div className="hidden md:block flex-1"></div>
@@ -1031,7 +1065,8 @@ export default function App() {
                       </motion.div>
                     </div>
                   </motion.div>
-                ))}
+                );
+              })}
               </div>
             </div>
 
@@ -1099,15 +1134,15 @@ export default function App() {
               </h3>
             </motion.div>
 
-            <motion.div
-              className="grid md:grid-cols-2 gap-8 md:gap-12 items-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               {/* Image */}
-              <div className="order-2 md:order-1">
+              <motion.div 
+                className="order-2 md:order-1"
+                initial={{ opacity: 0, x: -60, rotate: -5 }}
+                whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+                transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#b89c57] to-emerald-900 rounded-2xl transform rotate-3"></div>
                   <img 
@@ -1116,10 +1151,16 @@ export default function App() {
                     className="relative rounded-2xl shadow-2xl w-full object-cover"
                   />
                 </div>
-              </div>
+              </motion.div>
 
               {/* Content */}
-              <div className="order-1 md:order-2 space-y-6 text-right">
+              <motion.div 
+                className="order-1 md:order-2 space-y-6 text-right"
+                initial={{ opacity: 0, x: 60, y: 30 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 90 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
                 <p className="text-slate-700 text-lg md:text-xl leading-relaxed">
                   ב־15 השנים האחרונות ליוויתי מאות בעלי עסקים בתהליכים של שינוי אמיתי,
                   מעסק מתמודד ולעיתים אף על סף סגירה, לעסק פורח ומרוויח.
@@ -1152,8 +1193,8 @@ export default function App() {
                     שלח וואטסאפ
                   </Button>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -1236,10 +1277,10 @@ export default function App() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, scale: 0.9, y: 50 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, type: "spring", stiffness: 100 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <Card className="shadow-xl border-2 border-slate-100">
                 <CardContent className="p-8">
