@@ -3,14 +3,15 @@ import { Button } from './components/ui/button';
 import { Input } from './components/ui/input';
 import { Textarea } from './components/ui/textarea';
 import { Card, CardContent } from './components/ui/card';
-import { CheckCircle2, ArrowLeft, Phone, Mail, TrendingUp, Target, Users, Briefcase, Wrench, Rocket, Search, Map, Package, ClipboardList, Play, Gauge, RefreshCw, MessageCircle, AlertCircle, Clock, HelpCircle, Zap, ArrowDown, UserCheck } from 'lucide-react';
+import { Badge } from './components/ui/badge';
+import { CheckCircle2, ArrowLeft, Phone, Mail, TrendingUp, Target, Users, Briefcase, Wrench, Rocket, Search, Map, Package, ClipboardList, Play, Gauge, RefreshCw, MessageCircle, AlertCircle, Clock, HelpCircle, Zap, ArrowDown, UserCheck, Award } from 'lucide-react';
 import { motion } from 'motion/react';
 import emailjs from '@emailjs/browser';
 import { toast, Toaster } from 'sonner';
-import logo from 'figma:asset/aa236394a85839d09501bca626eae31c5d179ec4.png';
-import sprintLogo from 'figma:asset/f54119a0a6b681dad2c885bd59b2f54d53912281.png';
-import sprintTextGold from 'figma:asset/7c6dbce4ffd04d54e185014e2151233310a3023d.png';
-import profilePhoto from 'figma:asset/126116c592ab5780f36d5a1ac3592f903761dc7d.png';
+import logo from './assets/aa236394a85839d09501bca626eae31c5d179ec4.png';
+import sprintLogo from './assets/f54119a0a6b681dad2c885bd59b2f54d53912281.png';
+import sprintTextGold from './assets/7c6dbce4ffd04d54e185014e2151233310a3023d.png';
+import profilePhoto from './assets/126116c592ab5780f36d5a1ac3592f903761dc7d.png';
 
 export default function App() {
   const [formData, setFormData] = useState({
@@ -355,8 +356,58 @@ export default function App() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl text-white drop-shadow-[0_0_30px_rgba(184,156,87,0.5)]">
-                <strong>ספרינט – פריצה בהכנסות שלא נעצרת!</strong>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl text-white drop-shadow-[0_0_30px_rgba(184,156,87,0.5)] leading-relaxed">
+                <strong>
+                  <span className="block mb-4">
+                    <motion.span 
+                      className="text-[#b89c57] inline-block ml-3"
+                      animate={{ 
+                        textShadow: [
+                          '0 0 20px rgba(184,156,87,0.5)',
+                          '0 0 40px rgba(184,156,87,0.8)',
+                          '0 0 20px rgba(184,156,87,0.5)'
+                        ]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      ספרינט™
+                    </motion.span>
+                    {' – '}תהליך יישומי ומדויק
+                  </span>
+                  <span className="block">
+                    שמגדיל{' '}
+                    <motion.span 
+                      className="text-[#b89c57] inline-block"
+                      animate={{ 
+                        scale: [1, 1.1, 1],
+                        textShadow: [
+                          '0 0 10px rgba(184,156,87,0.5)',
+                          '0 0 30px rgba(184,156,87,1)',
+                          '0 0 10px rgba(184,156,87,0.5)'
+                        ]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                    >
+                      הכנסות
+                    </motion.span>
+                    {' '}ומחזיר{' '}
+                    <motion.span 
+                      className="text-[#b89c57] inline-block"
+                      animate={{ 
+                        scale: [1, 1.1, 1],
+                        textShadow: [
+                          '0 0 10px rgba(184,156,87,0.5)',
+                          '0 0 30px rgba(184,156,87,1)',
+                          '0 0 10px rgba(184,156,87,0.5)'
+                        ]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                    >
+                      שליטה
+                    </motion.span>
+                    {' '}לעסק שלך
+                  </span>
+                </strong>
               </h2>
             </motion.div>
 
@@ -470,25 +521,25 @@ export default function App() {
               {[
                 { 
                   icon: TrendingUp, 
-                  text: "המכירות תקועות ואני חייב הכנסות, עכשיו!", 
+                  text: "רוצה להגדיל הכנסות אבל לא יודע מאיפה להתחיל?", 
                   gradient: "from-emerald-900 to-emerald-800",
                   animation: { x: -80, rotate: -5 }
                 },
                 { 
                   icon: HelpCircle, 
-                  text: "חייב עוד הכנסות, מאיפה מתחילים? מה באמת יעבוד?", 
+                  text: "ניסית שיווק, סדנאות, טיפים… וההכנסות לא באמת זזות", 
                   gradient: "from-emerald-800 to-emerald-700",
                   animation: { x: 80, rotate: 5 }
                 },
                 { 
-                  icon: Zap, 
-                  text: "אני לא צריך עוד עצות אני צריך תוצאות אמיתיות!", 
+                  icon: Clock, 
+                  text: "הכול עליך ואתה לא מצליח לעצור לרגע לבחון את ההכנסות", 
                   gradient: "from-emerald-900 via-emerald-800 to-emerald-900",
                   animation: { y: 60, scale: 0.8 }
                 },
                 { 
-                  icon: Clock, 
-                  text: "הכול עליי, ואין לי רגע לבחון מה עם הכנסות.", 
+                  icon: Zap, 
+                  text: "לא מחפש עוד עצות – מחפש שיטה שמביאה", 
                   gradient: "from-emerald-800 to-emerald-900",
                   animation: { y: 60, opacity: 0 }
                 }
@@ -596,6 +647,20 @@ export default function App() {
                 </p>
               </motion.div>
 
+              {/* New Section - Added Below Box */}
+              <motion.div
+                className="text-center mt-8"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                <p className="text-2xl md:text-3xl text-emerald-900 leading-relaxed max-w-4xl mx-auto">
+                  לא סדנה, לא קורס, אלא{' '}
+                  <span className="text-[#b89c57]">תהליך מדויק</span> להגדלת הכנסות ויצירת מערכת עסקית שעובדת.
+                </p>
+              </motion.div>
+
               {/* Animated Arrow Pointing to Button */}
               <motion.div
                 className="flex justify-center pt-6"
@@ -621,6 +686,17 @@ export default function App() {
                   יאללה, אני מתחיל את הספרינט!
                 </Button>
               </div>
+              
+              {/* New Tagline - Below Button */}
+              <motion.p 
+                className="text-[#b89c57] text-lg md:text-xl mt-6 text-center"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                הכנסות שלא נעצרות – מתחילות עכשיו.
+              </motion.p>
             </motion.div>
           </div>
         </div>
@@ -885,11 +961,12 @@ export default function App() {
               
               <div className="h-1 w-32 bg-gradient-to-r from-transparent via-[#b89c57] to-transparent mx-auto mb-8"></div>
               
-              <p className="text-emerald-100 text-xl md:text-2xl max-w-3xl mx-auto mb-4">
-                זה לא קורס ולא סדנה. <span className="text-[#b89c57]">זה תוצאות!</span>
+              <p className="text-white text-xl md:text-2xl max-w-3xl mx-auto mb-6">
+                זה לא קורס ולא סדנה <span className="text-[#b89c57] text-2xl md:text-3xl">זו שיטה שעובדת בשטח!</span>
               </p>
-              <p className="text-emerald-200/80 text-lg md:text-xl max-w-4xl mx-auto">
-                פגישה שבועית 1:1, שבו בונים את תוכנית ההכנסות שלך, מיישמים בפועל, ומוודאים שהכול מתקדם ומניב תוצאות.
+              <p className="text-white text-lg md:text-xl max-w-4xl mx-auto leading-relaxed">
+                במהלך 12 שבועות של ליווי צמוד, אנחנו בונים יחד תהליך מכירה מדויק,<br />
+                מיישמים אותו בפועל, ומוודאים שכל צעד מייצר תוצאה אמיתית בהכנסות.
               </p>
             </motion.div>
 
@@ -1087,7 +1164,7 @@ export default function App() {
                   <Zap className="w-16 h-16 text-[#b89c57] mx-auto mb-6" strokeWidth={2} />
                   
                   <p className="text-[#b89c57] text-3xl md:text-4xl lg:text-5xl mb-8">
-                    ספרינט קצר. תוצאות שנשארות.
+                    ספרינט קצר. תוצאות אמיתיות שנשארות.
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -1126,16 +1203,13 @@ export default function App() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-[#b89c57] text-2xl md:text-3xl mb-6">
+              <h2 className="text-[#b89c57] text-3xl md:text-4xl lg:text-5xl">
                 מאחורי הספרינט
               </h2>
-              <h3 className="text-emerald-900 text-3xl md:text-4xl lg:text-5xl">
-                אני מרדכי דניאל קליין | מומחה לאפקטיביות עסקית
-              </h3>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-              {/* Image */}
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+              {/* Image with Name and Badge */}
               <motion.div 
                 className="order-2 md:order-1"
                 initial={{ opacity: 0, x: -60, rotate: -5 }}
@@ -1143,13 +1217,22 @@ export default function App() {
                 transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
                 viewport={{ once: true, amount: 0.3 }}
               >
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#b89c57] to-emerald-900 rounded-2xl transform rotate-3"></div>
-                  <img 
-                    src={profilePhoto}
-                    alt="מרדכי דניאל קליין"
-                    className="relative rounded-2xl shadow-2xl w-full object-cover"
-                  />
+                <div className="space-y-6">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#b89c57] to-emerald-900 rounded-2xl transform rotate-3"></div>
+                    <img 
+                      src={profilePhoto}
+                      alt="מרדכי דניאל קליין"
+                      className="relative rounded-2xl shadow-2xl w-full object-cover"
+                    />
+                  </div>
+                  
+                  {/* Name */}
+                  <div className="text-center">
+                    <p className="text-emerald-900 text-lg md:text-xl">
+                      מרדכי דניאל קליין | מומחה לאפקטיביות עסקית
+                    </p>
+                  </div>
                 </div>
               </motion.div>
 
@@ -1161,21 +1244,61 @@ export default function App() {
                 transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 90 }}
                 viewport={{ once: true, amount: 0.3 }}
               >
-                <p className="text-slate-700 text-lg md:text-xl leading-relaxed">
-                  ב־15 השנים האחרונות ליוויתי מאות בעלי עסקים בתהליכים של שינוי אמיתי,
-                  מעסק מתמודד ולעיתים אף על סף סגירה, לעסק פורח ומרוויח.
+                <p className="text-slate-700 text-lg md:text-xl leading-relaxed text-justify">
+                  ב־15 השנים האחרונות אני מלווה בעלי עסקים בתהליכי שינוי אמיתיים, מתמחה במיקוד עסקי, בבניית תהליכי מכירה שעובדים, בהגדלת הכנסות, וביצירת מומנטום עסקי.
                 </p>
-                <p className="text-slate-700 text-lg md:text-xl leading-relaxed">
-                  הספרינט נולד מהשטח מניסיון אמיתי שהוכיח שזה בדיוק מה שכל עסק צריך.
+                <p className="text-slate-700 text-lg md:text-xl leading-relaxed text-justify">
+                  הספרינט נולד מהשטח ממאות עסקים שפועלים מדויק ואפקטיבי, וייצבו את ההכנסות שלהם לטווח ארוך.
                 </p>
                 <div className="bg-emerald-50 border-r-4 border-[#b89c57] p-6 rounded-lg">
                   <p className="text-emerald-900 text-xl md:text-2xl">
-                    <strong>המטרה שלי פשוטה:</strong> לגרום לעסק שלך ליצור הכנסות יציבות, בעקביות ובבהירות.
+                    <strong>המטרה שלי פשוטה:</strong> להפוך את המכירות שלך למדויקות, עקביות ורווחיות בלי תלות במזל.
                   </p>
                 </div>
 
+                {/* Stats and Certification */}
+                <div className="space-y-4">
+                  {/* Certification Badge - Full Width */}
+                  <div className="flex justify-center">
+                    <Badge variant="outline" className="border-[#b89c57] text-[#b89c57] px-6 py-3 text-sm w-full justify-center bg-gradient-to-r from-amber-50 via-white to-amber-50">
+                      <Award className="ml-2 h-4 w-4" />
+                      חבר בלשכת היועצים העסקיים בישראל
+                    </Badge>
+                  </div>
+
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-3 gap-4">
+                  <motion.div 
+                    className="border-2 border-emerald-900 p-4 rounded-xl text-center bg-white hover:bg-emerald-50 transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className="text-emerald-900 text-3xl">15+</div>
+                    <div className="text-emerald-900 text-sm mt-1">שנות ניסיון</div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="border-2 border-[#b89c57] p-4 rounded-xl text-center bg-white hover:bg-amber-50 transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className="text-[#b89c57] text-3xl">300+</div>
+                    <div className="text-[#b89c57] text-sm mt-1">עסקים שליוויתי</div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="border-2 border-emerald-900 p-4 rounded-xl text-center bg-white hover:bg-emerald-50 transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className="text-emerald-900 text-3xl">100%</div>
+                    <div className="text-emerald-900 text-sm mt-1">מחויבות להצלחה</div>
+                  </motion.div>
+                  </div>
+                </div>
+
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
                   <Button 
                     size="lg" 
                     className="bg-emerald-900 hover:bg-emerald-800 text-white px-8 py-6 text-lg"
@@ -1217,27 +1340,32 @@ export default function App() {
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight">
               תפסיק לחכות שזה יקרה.<br />
-              פשוט תעשה את זה.
+              תגרום לזה לקרות.
             </h2>
             
             <div className="h-1 w-24 bg-[#b89c57] mx-auto"></div>
             
             <p className="text-xl md:text-2xl lg:text-3xl text-white/90 leading-relaxed">
-              ספרינט זה לא עוד הבטחה,<br />
-              זו התוכנית שהופכת עשייה לתוצאות אמיתיות.
+              ספרינט זו לא עוד הבטחה, <span className="text-[#b89c57] text-2xl md:text-3xl lg:text-4xl">זו שיטה</span>.
             </p>
 
             <motion.div
               className="pt-4"
               animate={{ 
-                scale: [1, 1.02, 1],
+                scale: [1, 1.05, 1],
               }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <p className="text-[#b89c57] text-2xl md:text-3xl lg:text-4xl mb-8">
-                <strong>12 שבועות להכנסות שעובדות.</strong>
+              <p className="text-[#b89c57] text-2xl md:text-3xl lg:text-4xl">
+                <strong>תוכנית שמובילה לתוצאות אמיתיות!</strong>
               </p>
             </motion.div>
+
+            <div className="pt-4">
+              <p className="text-white text-2xl md:text-3xl lg:text-4xl mb-8">
+                <strong>12 שבועות להכנסות שעובדות.</strong>
+              </p>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
