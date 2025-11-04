@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דוגמאות שילוב Dashboard ב-WordPress</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .example {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #0066cc;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #0066cc;
+            margin-top: 0;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        .instruction {
+            background: #e3f2fd;
+            padding: 10px;
+            border-right: 4px solid #2196f3;
+            margin: 10px 0;
+        }
+        .warning {
+            background: #fff3cd;
+            padding: 10px;
+            border-right: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .preview {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 דוגמאות שילוב Dashboard ב-WordPress/Elementor</h1>
+
+    <!-- דוגמה 1: Basic Iframe -->
+    <div class="example">
+        <h2>📌 דוגמה 1: Iframe בסיסי (הכי פשוט)</h2>
+        <div class="instruction">
+            <strong>איך להוסיף:</strong><br>
+            1. פתח עמוד ב-Elementor<br>
+            2. גרור HTML Widget<br>
+            3. העתק את הקוד למטה<br>
+            4. החלף את YOUR-PROJECT-URL ב-URL שקיבלת מ-Vercel
+        </div>
+        <pre><code>&lt;iframe 
+  src="https://YOUR-PROJECT-URL.vercel.app" 
+  width="100%" 
+  height="800px" 
+  frameborder="0"
+  style="border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
+&gt;&lt;/iframe&gt;</code></pre>
+        <div class="preview">
+            תצוגה מקדימה: הדאשבורד יופיע כאן בגובה 800px
+        </div>
+    </div>
+
+    <!-- דוגמה 2: Full Height -->
+    <div class="example">
+        <h2>📌 דוגמה 2: מסך מלא (Full Height)</h2>
+        <div class="instruction">
+            <strong>מתאים ל:</strong> עמוד ייעודי למשתמשים מחוברים
+        </div>
+        <pre><code>&lt;div style="width: 100%; min-height: 100vh; margin: 0; padding: 0;"&gt;
+  &lt;iframe 
+    src="https://YOUR-PROJECT-URL.vercel.app" 
+    width="100%" 
+    height="100%" 
+    style="
+      border: none; 
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+    "
+  &gt;&lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+        <div class="warning">
+            ⚠️ <strong>שים לב:</strong> צריך להסיר את ה-header וה-footer של WordPress בעמוד זה
+        </div>
+    </div>
+
+    <!-- דוגמה 3: Responsive -->
+    <div class="example">
+        <h2>📌 דוגמה 3: Responsive (מסתגל למובייל)</h2>
+        <div class="instruction">
+            <strong>יתרון:</strong> מסתגל אוטומטית לגודל המסך
+        </div>
+        <pre><code>&lt;style&gt;
+  .dashboard-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 75%; /* יחס גובה-רוחב 4:3 */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  .dashboard-container iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-container {
+      padding-bottom: 100%; /* מרובע במובייל */
+    }
+  }
+&lt;/style&gt;
+
+&lt;div class="dashboard-container"&gt;
+  &lt;iframe src="https://YOUR-PROJECT-URL.vercel.app"&gt;&lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <!-- דוגמה 4: עם כפתור טעינה -->
+    <div class="example">
+        <h2>📌 דוגמה 4: עם אנימציית טעינה</h2>
+        <div class="instruction">
+            <strong>חווית משתמש:</strong> מראה ספינר בזמן הטעינה
+        </div>
+        <pre><code>&lt;style&gt;
+  .dashboard-wrapper {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    background: #f5f5f5;
+    border-radius: 8px;
+  }
+  
+  .loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #0066cc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .dashboard-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .dashboard-wrapper iframe.loaded {
+    opacity: 1;
+  }
+&lt;/style&gt;
+
+&lt;div class="dashboard-wrapper"&gt;
+  &lt;div class="loading-spinner" id="loader"&gt;
+    &lt;div class="spinner"&gt;&lt;/div&gt;
+    &lt;p&gt;טוען את הדאשבורד...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;iframe 
+    src="https://YOUR-PROJECT-URL.vercel.app"
+    id="dashboardFrame"
+    onload="document.getElementById('loader').style.display='none'; this.classList.add('loaded');"
+  &gt;&lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <!-- דוגמה 5: עם כפתור פתיחה -->
+    <div class="example">
+        <h2>📌 דוגמה 5: כפתור לפתיחה בחלון חדש</h2>
+        <div class="instruction">
+            <strong>מתאים ל:</strong> כשרוצים שהדאשבורד ייפתח בטאב נפרד
+        </div>
+        <pre><code>&lt;style&gt;
+  .dashboard-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  }
+  
+  .dashboard-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+  }
+  
+  .dashboard-button:before {
+    content: "📊 ";
+    margin-left: 8px;
+  }
+&lt;/style&gt;
+
+&lt;div style="text-align: center; padding: 40px;"&gt;
+  &lt;a href="https://YOUR-PROJECT-URL.vercel.app" 
+     target="_blank" 
+     class="dashboard-button"&gt;
+    פתח את לוח המחוונים
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <!-- הוראות נוספות -->
+    <div class="example">
+        <h2>💡 טיפים חשובים</h2>
+        <div class="instruction">
+            <strong>1. בעיות CORS:</strong> אם ה-iframe לא עובד, ודא שהגדרת CORS ב-Vercel מאפשרת את הדומיין שלך
+        </div>
+        <div class="instruction">
+            <strong>2. גובה אופטימלי:</strong> התחל עם 800px ובדוק במובייל - שנה לפי הצורך
+        </div>
+        <div class="instruction">
+            <strong>3. ביצועים:</strong> שקול lazy loading אם יש הרבה iframes בעמוד
+        </div>
+        <div class="warning">
+            <strong>4. אבטחה:</strong> אם הדאשבורד מכיל מידע רגיש, הגבל גישה רק למשתמשים מחוברים ב-WordPress
+        </div>
+    </div>
+
+    <!-- קוד PHP לבדיקת משתמש מחובר -->
+    <div class="example">
+        <h2>🔐 בונוס: הגבלה למשתמשים מחוברים (PHP)</h2>
+        <div class="instruction">
+            הוסף בתבנית PHP של WordPress (לא ב-Elementor)
+        </div>
+        <pre><code>&lt;?php
+if ( is_user_logged_in() ) {
+    // המשתמש מחובר - הצג את הדאשבורד
+    ?&gt;
+    &lt;iframe 
+      src="https://YOUR-PROJECT-URL.vercel.app" 
+      width="100%" 
+      height="800px"
+      frameborder="0"
+    &gt;&lt;/iframe&gt;
+    &lt;?php
+} else {
+    // המשתמש לא מחובר - הצג הודעה
+    echo '&lt;p style="text-align: center; padding: 40px;"&gt;';
+    echo 'יש &lt;a href="' . wp_login_url() . '"&gt;להתחבר&lt;/a&gt; כדי לצפות בדאשבורד';
+    echo '&lt;/p&gt;';
+}
+?&gt;</code></pre>
+    </div>
+
+</body>
+</html>
