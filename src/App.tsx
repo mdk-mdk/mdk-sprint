@@ -280,7 +280,7 @@ export default function App() {
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           >
-            <TrendingUp size={100} className="text-[#b89c57]" strokeWidth={2} />
+            <TrendingUp size={100} className="text-white" strokeWidth={2} />
           </motion.div>
           
           {/* Rocket - Bottom Left */}
@@ -304,7 +304,7 @@ export default function App() {
             }}
             transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
           >
-            <Target size={70} className="text-[#b89c57]" strokeWidth={2} />
+            <Target size={70} className="text-white" strokeWidth={2} />
           </motion.div>
           
           {/* Zap - Middle Right */}
@@ -316,7 +316,7 @@ export default function App() {
             }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
-            <Zap size={85} className="text-[#b89c57]" strokeWidth={2} />
+            <Zap size={85} className="text-white" strokeWidth={2} />
           </motion.div>
           
           {/* Sprint Logo - Rotating */}
@@ -340,7 +340,7 @@ export default function App() {
             }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           >
-            <CheckCircle2 size={75} className="text-[#b89c57]" strokeWidth={2} />
+            <CheckCircle2 size={75} className="text-white" strokeWidth={2} />
           </motion.div>
           
           {/* TrendingUp - Bottom Center */}
