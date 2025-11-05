@@ -273,7 +273,7 @@ export default function App() {
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Trending Up - Top Right */}
           <motion.div
-            className="absolute top-20 right-[10%] opacity-10"
+            className="absolute top-20 right-[10%] opacity-5"
             animate={{ 
               y: [0, -50, 0],
               rotate: [0, 10, 0]
@@ -285,7 +285,7 @@ export default function App() {
           
           {/* Rocket - Bottom Left */}
           <motion.div
-            className="absolute bottom-20 left-[15%] opacity-10"
+            className="absolute bottom-20 left-[15%] opacity-5"
             animate={{ 
               y: [0, 50, 0],
               x: [0, 30, 0]
@@ -297,7 +297,7 @@ export default function App() {
           
           {/* Target - Top Left */}
           <motion.div
-            className="absolute top-32 left-[5%] opacity-8"
+            className="absolute top-32 left-[5%] opacity-5"
             animate={{ 
               rotate: [0, 360],
               scale: [1, 1.1, 1]
@@ -309,10 +309,10 @@ export default function App() {
           
           {/* Zap - Middle Right */}
           <motion.div
-            className="absolute top-1/3 right-[5%] opacity-8"
+            className="absolute top-1/3 right-[5%] opacity-5"
             animate={{ 
               y: [0, -30, 0],
-              opacity: [0.08, 0.15, 0.08]
+              opacity: [0.05, 0.08, 0.05]
             }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -333,7 +333,7 @@ export default function App() {
           
           {/* CheckCircle - Bottom Right */}
           <motion.div
-            className="absolute bottom-32 right-[20%] opacity-8"
+            className="absolute bottom-32 right-[20%] opacity-5"
             animate={{ 
               scale: [1, 1.2, 1],
               rotate: [0, -15, 0]
